@@ -2,46 +2,91 @@
 <html>
 
 <head>
-	<title>pCube Payment</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width">
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js">
-	</script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js">
-	</script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
-	<style type="text/css">
-		html,
-		body {
-			height: 200px;
-		}
+  <title>pCube Payment</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js">
+  </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js">
+  </script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+  <style type="text/css">
+    html,
+      body {
+        height: 200px;
+      }
+    .mid-center {
+      top: 50%;
+      width: 100%;
+      transform: translateY(-50%);
+    }
 
-		.mid-center {
-			top: 50%;
-			left: 50%;
-			transform: translateX(-50%) translateY(-50%);
-		}
-	</style>
+    .loginbtn {
+      overflow: hidden;
+      height: 38px;
+      font-weight: 500;
+      text-transform: uppercase;
+      color: #e8e8e8;
+      border-radius: 64px;
+      padding: 0 2.6rem;
+      font-family: 'Open Sans', sans-serif !important;
+      font-weight: 300 !important;
+      font-size: 14px;
+      border-width: 1px;
+      border-style: solid;
+      border-color: #e8e8e8;
+      box-shadow: none;
+      background: rgba(255, 255, 255, 0.21) !important;
+    }
+
+
+    .bg-image {
+      background-image: url(img/loginbg.png);
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  </style>
 </head>
 
 <body>
 
-	<div class="container h-100">
-		<div class="d-flex h-100">
-			<div class="position-absolute mid-center">
-				<button type="button" class="ps-button btn btn-primary" ps-checkoutType="checkout_token"
-					ps-fixedAmount="false" ps-paymentCurrency="USD">
-					Confirm Bank Details !
-				</button>
-			</div>
-		</div>
-	</div>
-	<!-- Drop these script to add checkout widget -->
+  <!-- <div class="container-fluid bg-image" style="height: 100vh;">
+    <div class="align-items-center d-flex h-100">
+      <div class=" mid-center">
+        <!-- <button type="button" class="ps-button w-100 btn btn-primary"
+                  ps-checkoutType="checkout_token"
+                  ps-fixedAmount="false"
+                  ps-paymentCurrency="USD"
+              >
+                  Confirm Bank Details !
+      </button> -->
+        <!-- <button  color="light" class="loginbtn d-block w-100"
+          ps-checkoutType="checkout_token" ps-fixedAmount="false" ps-paymentCurrency="USD">Confirm Bank Details
+          !</button>
+      </div>
+    </div>
+  </div> -->
 
 
-	<script type="text/javascript">
+  <div class="container bg-image"  style="height: 100vh; width: 100%;">
+  <div class="d-flex h-100">
+    <div class="position-absolute mid-center">
+      <button type="button" class="ps-button btn btn-primary loginbtn"
+                  ps-checkoutType="checkout_token"
+                  ps-fixedAmount="false"
+                  ps-paymentCurrency="USD" style="margin-left: 50px;"
+              >
+                  Confirm Bank Details !
+      </button>
+    </div>
+  </div>
+</div>
+  <!-- Drop these script to add checkout widget -->
 
-		function getParameterByName(name, url) {
+
+  <script type="text/javascript">
+
+function getParameterByName(name, url) {
 			if (!url) url = window.location.href;
 			console.log(url)
 			url = url.toLowerCase(); // This is just to avoid case sensitiveness  
@@ -52,53 +97,56 @@
 			if (!results[2]) return '';
 			return decodeURIComponent(results[2].replace(/\+/g, " "));
 		}
-		// document.write(
-		//     '<scr' + 'ipt '
-		//     + 'type="text/javascript" '
-		//     + 'id="ps_checkout" '
-		//     + 'src="https://checkout.paystand.co/v4/js/paystand.checkout.js" '
-		//     + 'ps-env="sandbox"'
-		//     + 'ps-publishableKey="8jlkxlts0nisoonsdl5ymjtr"'
-		//     + 'ps-mode="embed"'
-		//     + 'ps-logoUrl="http://www.image360.com/assets/live/0/34/59/115/118/design-output-services-logo-creation-national-log001.jpg?width=330&height=290&mode=crop&scale=both"'
-		//     + 'ps-viewFunds="bank"'
-		//     + 'ps-payerEmail="surendrak@ibaseit.com"'
-		//     + '></sc' + 'ript>'
-		// );
 
-		document.write(
-			'<scr' + 'ipt '
-			+ 'type="text/javascript" '
-			+ 'id="ps_checkout" '
-			+ 'src="https://checkout.paystand.co/v4/js/paystand.checkout.js" '
-			+ 'ps-mode="modal" '
-			+ 'ps-email='+getParameterByName('res')+' '
-			+ 'ps-env="sandbox" '
-			+ 'ps-viewFunds="bank"'
-			+ 'ps-publishableKey="1noqhele1yjgieoi8aqe4n8i" '
-			+ '></sc' + 'ript>'
-		);
-		
-	</script>
+    // document.write(
+    //     '<scr' + 'ipt '
+    //     + 'type="text/javascript" '
+    //     + 'id="ps_checkout" '
+    //     + 'src="https://checkout.paystand.co/v4/js/paystand.checkout.js" '
+    //     + 'ps-env="sandbox"'
+    //     + 'ps-publishableKey="8jlkxlts0nisoonsdl5ymjtr"'
+    //     + 'ps-mode="embed"'
+    //     + 'ps-logoUrl="http://www.image360.com/assets/live/0/34/59/115/118/design-output-services-logo-creation-national-log001.jpg?width=330&height=290&mode=crop&scale=both"'
+    //     + 'ps-viewFunds="bank"'
+    //     + 'ps-payerEmail="surendrak@ibaseit.com"'
+    //     + '></sc' + 'ript>'
+    // );
 
-	<script type="text/javascript">
+    document.write(
+      '<scr' + 'ipt '
+      + 'type="text/javascript" '
+      + 'id="ps_checkout" '
+      + 'src="https://checkout.paystand.co/v4/js/paystand.checkout.js" '
+      + 'ps-mode="modal" '
+      + 'ps-email='+getParameterByName('res')+' '
+      + 'ps-env="sandbox" '
+      + 'ps-viewFunds="bank"'
+      + 'ps-publishableKey="1noqhele1yjgieoi8aqe4n8i" '
+      + '></sc' + 'ript>'
+    );
+  </script>
+
+  <script type="text/javascript">
 
 
-		PayStandCheckout.once("event", "checkoutLoaded", function () {
-			//PayStandCheckout.reset(_.merge({}, window.psConfig.init, init), 400, 700);
-		});
+    PayStandCheckout.once("event", "checkoutLoaded", function () {
+      //PayStandCheckout.reset(_.merge({}, window.psConfig.init, init), 400, 700);
+    });
 
-		PayStandCheckout.onComplete(function (data) {
-			console.log(">> flow complete >> ", data.response.data);
-		});
+    PayStandCheckout.onComplete(function (data) {
+      console.log(">> flow complete >> ", data.response.data);
 
-		psCheckout.onError(function (data) {
-			console.log(data)
-		});
-		psCheckout.checkoutAction = function (data) {
-			console.log(data)
-		};
-	</script>
+    });
+
+    psCheckout.onError(function (data) {
+      console.log(data)
+
+    });
+    psCheckout.checkoutAction = function (data) {
+      console.log(data)
+
+    };
+  </script>
 
 </body>
 
