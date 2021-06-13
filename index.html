@@ -138,7 +138,7 @@ function getParameterByName(name, url) {
       console.log(">> flow complete >> ", data.response.data);
 	    alert('onComplete');
       PayStandCheckout.hideCheckout();
-      window.location.href = "http://localhost:8080/paymentsuccess?res"+JSON.stringify(data.response.data);
+      window.location.href = "http://localhost:8080/paymentsuccess?res="+JSON.stringify(data.response.data);
 
     });
 
