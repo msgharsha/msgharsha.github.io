@@ -136,20 +136,21 @@ function getParameterByName(name, url) {
 
     PayStandCheckout.onComplete(function (data) {
       console.log(">> flow complete >> ", data.response.data);
-	    alert('onComplete');
       PayStandCheckout.hideCheckout();
-      window.location.href = "http://localhost:8080/paymentsuccess?res="+JSON.stringify(data.response.data);
+      window.location.href = "http://localhost:8080/paymentSuccess?res="+JSON.stringify(data.response.data);
 
     });
 
     psCheckout.onError(function (data) {
       console.log(data)
-	    alert('onError');
+      PayStandCheckout.hideCheckout();
+      window.location.href = "http://localhost:8080/paymentFailure?res="+JSON.stringify(data.response);
 
     });
     psCheckout.checkoutAction = function (data) {
       console.log(data)
-	    alert('checkoutAction');
+      PayStandCheckout.hideCheckout();
+      window.location.href = "http://localhost:8080/paymentClose?res="+JSON.stringify(data.response);
 
     };
   </script>
