@@ -54,7 +54,7 @@
         <div class="d-flex h-100 position-relative">
             <div class="position-absolute mid-center">
                 <button type="button" class="ps-button btn btn-primary loginbtn w-100" ps-checkoutType="checkout_token"
-                    ps-fixedAmount="false" ps-paymentCurrency="USD" ps-viewClose="hide" ps-viewCheckout="mobile" >
+                    ps-fixedAmount="false" ps-paymentCurrency="USD" ps-viewClose="hide"  >
                     Confirm Bank Details !
                 </button>
             </div>
@@ -81,7 +81,8 @@
             + 'id="ps_checkout" '
             + 'src="https://checkout.paystand.co/v4/js/paystand.checkout.js" '
             + 'ps-env="sandbox" '
-            + 'ps-mode="modal" '
+            + 'ps-mode="embed" '
+            + 'ps-viewCheckout="mobile" '
             + 'ps-viewFunds ="bank" '
             + 'ps-payerEmail=' + getParameterByName('res') + ' '
             + 'ps-publishableKey="1noqhele1yjgieoi8aqe4n8i" '
