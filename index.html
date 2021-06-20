@@ -50,12 +50,17 @@
 </head>
 
 <body>
-
-    <div id="ps_container_id"></div>
-
-    <div id="ps_checkout_load" ps-mode="embed"></div>
-
-
+    <div class="container-fluid bg-image px-5" style="height: 100vh;">
+        <div class="d-flex h-100 position-relative">
+            <div class="position-absolute mid-center">
+                <button type="button" class="ps-button btn btn-primary loginbtn w-100" ps-checkoutType="checkout_token"
+                    ps-fixedAmount="false" ps-paymentCurrency="USD" ps-viewClose="hide"  >
+                    Confirm Bank Details !
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Drop these script to add checkout widget -->
     <script type="text/javascript">
 
         function getParameterByName(name, url) {
@@ -69,7 +74,6 @@
             if (!results[2]) return '';
             return decodeURIComponent(results[2].replace(/\+/g, " "));
         }
-        
 
         document.write(
             '<scr' + 'ipt '
@@ -77,11 +81,8 @@
             + 'id="ps_checkout" '
             + 'src="https://checkout.paystand.co/v4/js/paystand.checkout.js" '
             + 'ps-env="sandbox" '
-            + 'ps-mode="embed" '
+            + 'ps-mode="model" '
             + 'ps-viewFunds ="bank" '
-            + 'ps-checkoutType="checkout_token" '
-            + 'ps-fixedAmount="false" '
-            + 'ps-paymentCurrency="USD" '
             + 'ps-payerEmail=' + getParameterByName('res') + ' '
             + 'ps-publishableKey="1noqhele1yjgieoi8aqe4n8i" '
             + '></sc' + 'ript>'
@@ -97,22 +98,20 @@
         PayStandCheckout.onComplete(function (data) {
             console.log(">> flow complete >> ", data.response.data);
             PayStandCheckout.hideCheckout();
-            window.location.href ="http://localhost:8080/paymentSuccess?res=" + JSON.stringify(data.response.data)
-            
-            
+            window.location.href = "http://localhost:8080/paymentSuccess?res=" + JSON.stringify(data.response.data);
 
         });
 
         psCheckout.onError(function (data) {
             console.log(data)
             PayStandCheckout.hideCheckout();
-            document.location.href = "http://localhost:8080/paymentFailure?res=" + JSON.stringify(data.response);
+            window.location.href = "http://localhost:8080/paymentFailure?res=" + JSON.stringify(data.response);
 
         });
         psCheckout.checkoutAction = function (data) {
             console.log(data)
             PayStandCheckout.hideCheckout();
-            document.location.href = "http://localhost:8080/paymentClose?res=" + JSON.stringify(data.response);
+            window.location.href = "http://localhost:8080/paymentClose?res=" + JSON.stringify(data.response);
 
         };
     </script>
